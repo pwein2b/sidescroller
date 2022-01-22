@@ -3,36 +3,52 @@
 using namespace std;
 
 class Vogel {
+    
+        // Erstellt die privaten Attribute
 
         private:
         Image bird;
-        int posx;
-        int posy;
+        int posX;
+        int posY;
         bool dead = true;
         
-        public:
-        Vogel(SVG &spielfeld) { 
-            this->posx = 200;
-            this->posy= 50;
-            bird = Image("https://miro.medium.com/max/724/1*ey7wIxpYa7Er7nRHhwyirQ.png", posx, posy, 40, 40, &spielfeld);
-        }
+        // Ab hier alles auf public, also von außen zugreifbar
     
-        int getYCord(){
+        public:
+    
+        // Unser Standardkonstruktor
+    
+        Vogel(SVG &spielfeld) {
+            
+            this->posX = 200;
+            this->posY= 50;
+            bird = Image("https://miro.medium.com/max/724/1*ey7wIxpYa7Er7nRHhwyirQ.png", posX, posY, 40, 40, &spielfeld);
+        }
+        
+        // Unsere Operationen
+    
+        int getYCord() {
+            
             return bird.getY();         
         }
     
-        void birdHide(){
-        bird.hide();
+        void birdHide() {
+            
+            bird.hide();
         }
     
-        void birdShow(){
-        bird.show();
+        void birdShow() {
+            
+            bird.show();
         }
     
+        // Wenn unser Vogel stirbt, soll er rotieren.
     
-        void vogelDead(){
+        void vogelDead() {
             int rot;
-            while (dead == true){
+            bird = Image("https://media.tenor.com/images/ff5faf4a21655f2fe7f93f120ec6b803/tenor.gif", posX, posY, 40, 40, &spielfeld);
+            while (dead == true) {
+                
                 bird.moveTo(bird.getX(),bird.getY() + 2);
                 bird.moveTo(bird.getX() + 1,bird.getY());
                 bird.rotateTo(0 + rot);
@@ -45,13 +61,14 @@ class Vogel {
         }
     
         // Unser Vogel ist stationär, deswegen 200 als X-Wert
-    
 
-        void move(int add){
+        void move(int add) {
+            
             bird.moveTo(200, add);
         }
         
-        void rotate(int angle){
+        void rotate(int angle) {
+            
             bird.rotateTo(angle);
         }
 };

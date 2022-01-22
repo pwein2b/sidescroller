@@ -3,7 +3,8 @@
 using namespace std;
 
 class Layout {
-
+        
+        // Private Attribute
         private:
         Rect redFlash;
         Rect infoBack;
@@ -11,8 +12,11 @@ class Layout {
         Image gameover;
         Image welcome;          
 
-        
+        // Alles auf public
         public:
+    
+        // Konstruktor, der die grafischen Sachen macht
+    
         Layout(SVG &spielfeld) {
             
             hintergrund = Image("https://user-images.githubusercontent.com/18351809/46888871-624a3900-ce7f-11e8-808e-99fd90c8a3f4.png", 0, 0, 1920, 1080, &spielfeld);
@@ -32,19 +36,23 @@ class Layout {
             welcome = Image("https://www.codeview.net/wp-content/uploads/2018/03/Flappy-Bird-1.jpg", 400, 200, 1200, 700, &spielfeld);
             
         }
+        
+        // Wird ausgeführt bei Spielabbruch
     
-        void gameOver(){
+        void gameOver() {
+            
             gameover.show();
             infoBack.setFill("black");
             infoBack.setColor("black");
         }
         
-        // hide welcome image
-        void hideWelcome(){
+        void hideWelcome() {
+            
             welcome.hide();
         }
         
-        // flicker screen
+        // Wenn der Vogel stirbt, soll das Bild flackern.
+    
         void dmg(){
             for (int i = 0; i < 2; i++) {
                 redFlash.setFill(255, 0, 0, 1);
