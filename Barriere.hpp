@@ -6,7 +6,7 @@ using namespace std;
 #define SPIELFELD_HOEHE 400
 
 class Barriere {
-    private:
+    protected:
     
     Rect *lowerComponent;
     Rect *upperComponent;
@@ -57,5 +57,43 @@ class Barriere {
     void setColor (int r, int g, int b, float a) {
         upperComponent->setColor(r, g, b, a);
         lowerComponent->setColor(r, g, b, a);
+    }
+    
+    /* Tut nichts, wird von der Subklasse verändert. */
+    virtual void update () {
+    }
+};
+
+class DynamischeBarriere : public Barriere {
+    private:
+    int bottleneckMoveSpeed;
+    bool moveBottleneckUp;
+    
+    public:
+    DynamischeBarriere (int bottleneckHeight, int xCoord, SVG &spielfeld)
+    : Barriere (0, bottleneckHeight, xCoord, spielfeld) {
+        // Wie schnell soll sich die Öffnung pro Iteration verschieben?
+        bottleneckMoveSpeed = (rand() % 10) + 2;
+        moveBottleneckUp = false;
+    }
+    
+    void update () override {
+        // Muss sich die Öffnung hoch oder runter bewegen?
+        if (upperHeight - bottleneckMoveSpeed <= 0) {
+            moveBottleneckUp = false;
+        } else if (upperHeight + bottleneckHeight + bottleneckMoveSpeed >= SPIELFELD_HOEHE) {
+            moveBottleneckUp = true;
+        }
+        
+        if (moveBottleneckUp) {
+            upperHeight -= bottleneckMoveSpeed;
+            lowerHeight += bottleneckMoveSpeed;
+        } else {
+            upperHeight += bottleneckMoveSpeed;
+            lowerHeight -= bottleneckMoveSpeed;
+        }
+        upperComponent->setHeight(upperHeight);
+        lowerComponent->moveTo(xCoord, upperHeight + bottleneckHeight);
+        lowerComponent->setHeight(lowerHeight);
     }
 };
