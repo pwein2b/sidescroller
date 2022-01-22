@@ -20,11 +20,11 @@ class Layout {
             gameover = Image("https://ak.picdn.net/shutterstock/videos/26123588/thumb/9.jpg", 400, 200, 1200, 700, &spielfeld);
             gameover.hide();
             
-            redFlash = Rect(-100, 0, 1200, 600, &spielfeld);
+            redFlash = Rect(-100, 0, 1200, 600, spielfeld);
             redFlash.setFill(255, 0, 0, 0);
             redFlash.setColor(255, 0, 0, 0);
             
-            infoBack = Rect(-50, 0, 80, 20, &spielfeld);
+            infoBack = Rect(-50, 0, 80, 20, spielfeld);
             infoBack.setFill(255,255,255,1);
             infoBack.setColor(0,0,0,1);
             

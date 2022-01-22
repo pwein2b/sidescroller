@@ -20,20 +20,20 @@ class Vogel {
         
         // Unsere Operationen
     
-        int getYCord() {
+        int getYCoord() {
             return bird.getY();         
         }
     
-        void birdHide() {
+        void hide() {
             bird.hide();
         }
     
-        void birdShow() {
+        void show() {
             bird.show();
         }
     
         // Wenn unser Vogel stirbt, soll er rotieren und zu Rick Astley werden.
-        void vogelTot() {
+        void death() {
             int rot;
             bird = Image("https://media.tenor.com/images/ff5faf4a21655f2fe7f93f120ec6b803/tenor.gif", posX, posY, 40, 40, &spielfeld);
             
