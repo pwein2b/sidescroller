@@ -16,7 +16,7 @@ class Vogel {
         Vogel(SVG &spielfeld) { 
             this->spielfeld = &spielfeld;
             this->posX = 200;
-            this->posY= 50;
+            this->posY = 50;
             bird = Image("https://miro.medium.com/max/724/1*ey7wIxpYa7Er7nRHhwyirQ.png", posX, posY, 40, 40, this->spielfeld);
         }
         
