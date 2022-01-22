@@ -8,14 +8,16 @@ class Vogel {
         int posX;
         int posY;
         bool dead = true;
+        SVG *spielfeld;
     
         public:
     
         // Unser Konstruktor den anfänglichen Koordinaten und der grafischen Darstellung des Vogels
         Vogel(SVG &spielfeld) { 
+            this->spielfeld = &spielfeld;
             this->posX = 200;
             this->posY= 50;
-            bird = Image("https://miro.medium.com/max/724/1*ey7wIxpYa7Er7nRHhwyirQ.png", posX, posY, 40, 40, &spielfeld);
+            bird = Image("https://miro.medium.com/max/724/1*ey7wIxpYa7Er7nRHhwyirQ.png", posX, posY, 40, 40, this->spielfeld);
         }
         
         // Unsere Operationen
@@ -35,7 +37,7 @@ class Vogel {
         // Wenn unser Vogel stirbt, soll er rotieren und zu Rick Astley werden.
         void death() {
             int rot;
-            bird = Image("https://media.tenor.com/images/ff5faf4a21655f2fe7f93f120ec6b803/tenor.gif", posX, posY, 40, 40, &spielfeld);
+            bird = Image("https://media.tenor.com/images/ff5faf4a21655f2fe7f93f120ec6b803/tenor.gif", posX, posY, 40, 40, spielfeld);
             
             while (dead == true) {
                 bird.moveTo(bird.getX(),bird.getY() + 2);
