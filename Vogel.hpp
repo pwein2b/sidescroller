@@ -16,7 +16,7 @@ class Vogel {
     
         public:
     
-        // Unser Standardkonstruktor
+        // Unser Konstruktor den anfänglichen Koordinaten und der grafischen Darstellung des Vogels
     
         Vogel(SVG &spielfeld) {
             
@@ -42,25 +42,29 @@ class Vogel {
             bird.show();
         }
     
-        // Wenn unser Vogel stirbt, soll er rotieren.
+        // Wenn unser Vogel stirbt, soll er rotieren und zu Rick Astley werden.
     
         void vogelDead() {
+            
             int rot;
             bird = Image("https://media.tenor.com/images/ff5faf4a21655f2fe7f93f120ec6b803/tenor.gif", posX, posY, 40, 40, &spielfeld);
+            
             while (dead == true) {
                 
                 bird.moveTo(bird.getX(),bird.getY() + 2);
                 bird.moveTo(bird.getX() + 1,bird.getY());
                 bird.rotateTo(0 + rot);
                 rot += 2;
-                if (bird.getY() > 450){
+                
+                if (bird.getY() > 450) {
+                    
                     dead = false;
                     bird.hide();
                 }
             }
         }
     
-        // Unser Vogel ist stationär, deswegen 200 als X-Wert
+        // Unser Vogel ist stationär, deswegen 200 als X-Wert.
 
         void move(int add) {
             

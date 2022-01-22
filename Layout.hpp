@@ -5,6 +5,7 @@ using namespace std;
 class Layout {
         
         // Private Attribute
+    
         private:
         Rect redFlash;
         Rect infoBack;
@@ -13,6 +14,7 @@ class Layout {
         Image welcome;          
 
         // Alles auf public
+    
         public:
     
         // Konstruktor, der die grafischen Sachen macht
@@ -53,8 +55,10 @@ class Layout {
         
         // Wenn der Vogel stirbt, soll das Bild flackern.
     
-        void dmg(){
+        void dmg() {
+            
             for (int i = 0; i < 2; i++) {
+                
                 redFlash.setFill(255, 0, 0, 1);
                 AlgoViz::sleep(100);
                 redFlash.setFill(255, 0, 0, 0);
